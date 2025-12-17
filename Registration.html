@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration panel</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Registration</h2>
+        <form action="home.html" method="POST">
+            <div class="form-group">
+                <label for="username">User name</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <div id="captcha" class="g-recaptcha" data-sitekey="6Lez5mAqAAAAAD5fGkT9h7VH55AKq0UrRSe4CZws"></div>
+            <button type="submit" class="register-button">Sign up</button>
+        </form>
+        <p>Already have an account? <a href="index.html">Log in</a></p>
+        <div class="footerBottom">
+            <p>Copyright &copy;2024 <span class="designer">Radosław Mazur Miłosz Biniek</span></p>
+        </div>
+    </div>
+</body>
+</html>
