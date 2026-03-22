@@ -1,0 +1,62 @@
+body {
+    background-image: url('img/img.jpg');
+    background-size: cover;
+    font-family: "Nunito", sans-serif;
+    color: green;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 32px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: green;
+}
+
+#start-container, #quiz-container, #wynik {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid green;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: 2px solid green;
+    width: 80%;
+    margin-top: 15px;
+}
+
+button {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10px 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: darkgreen;
+}
+
+#feedback {
+    font-size: 20px;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#wynik {
+    font-size: 24px;
+    font-weight: bold;
+    color: green;
+}
