@@ -1,20 +1,44 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyfronex &mdash; Zgloszenie wyslane</title>
+    <link rel="stylesheet" href="login.css">
 </head>
-
 <body>
 
-    <div class="Support">
-        <h1>Your application has been sent and will be reviewed as soon as possible</h1>
-    </div>
-    <div class="back">
-        <h2><button><a href="home.php">CLICK ON THIS INSCRIPTION TO GO TO THE MAIN PAGE</a></button></h2>
-    </div>
+<div class="math-bg" id="mathBg"></div>
 
+<div class="auth-page" style="grid-template-columns: 1fr; display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+    <div class="auth-card" style="max-width: 480px; margin: 2rem; text-align: center;">
+        <div style="font-size: 3.5rem; margin-bottom: 1rem;">&#x2705;</div>
+        
+        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; color: #fff; margin-bottom: 0.8rem;">Wiadomosc wyslana!</h2>
+        
+        <p style="color: rgba(240,244,255,0.7); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">
+            Dziekujemy za kontakt. Twoje zgloszenie zostalo zarejestrowane i odpowiemy na nie najszybciej jak to mozliwe na podany adres e-mail.
+        </p>
+
+        <a href="home.php" class="btn-primary" style="display: inline-block; text-decoration: none; text-align: center; max-width: 260px; margin: 0 auto;">&larr; Wroc do panelu</a>
+    </div>
+</div>
+
+<p class="auth-footer">Copyright &copy;2026 <span>Radoslaw Mazur &amp; Milosz Biniek</span></p>
+
+<script>
+    const symbols = ['\u03A3','\u222B','\u221A','\u03C0','\u221E','\u2248','\u0394','\u2202','\u2207','\u03B1','\u03B2','\u03B3','\u03BB','\u03B8','\u2208','\u2200','\u2203','\u00B1','\u00D7','\u00F7','\u00B2','\u00B3'];
+    const container = document.getElementById('mathBg');
+    for (let i = 0; i < 22; i++) {
+        const span = document.createElement('span');
+        span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        span.style.left = Math.random() * 100 + 'vw';
+        span.style.animationDuration = (14 + Math.random() * 20) + 's';
+        span.style.animationDelay = (Math.random() * -30) + 's';
+        span.style.fontSize = (1 + Math.random() * 1.8) + 'rem';
+        span.style.opacity = Math.random() * 0.5 + 0.05;
+        container.appendChild(span);
+    }
+</script>
 </body>
-
 </html>

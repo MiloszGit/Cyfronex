@@ -1,9 +1,423 @@
-body {
-    background-image: url(img/img.jpg);
-    font-family: "Nunito", sans-serif;
+/* ============================================================
+   Cyfronex â€” Auth Page Styles (Login & Register)
+   Modern dark + glassmorphism design
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+    box-sizing: border-box;
     margin: 0;
-    height: 100vh;
+    padding: 0;
+}
+
+:root {
+    --bg-dark:       #0a0e1a;
+    --bg-mid:        #0f1629;
+    --accent:        #6c63ff;
+    --accent-2:      #00d4aa;
+    --accent-3:      #ff6b6b;
+    --glass-bg:      rgba(255, 255, 255, 0.05);
+    --glass-border:  rgba(255, 255, 255, 0.12);
+    --text-primary:  #f0f4ff;
+    --text-muted:    rgba(240, 244, 255, 0.55);
+    --input-bg:      rgba(255, 255, 255, 0.07);
+    --input-border:  rgba(255, 255, 255, 0.15);
+    --radius-card:   24px;
+    --radius-input:  12px;
+    --transition:    0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body {
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-dark);
+    overflow-x: hidden;
+}
+
+/* ---------- Animated Background ---------- */
+body {
+    background: var(--bg-dark);
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 20% 10%,  rgba(108,99,255,.22) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 85%,  rgba(0,212,170,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 60% 40%,  rgba(255,107,107,.12) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Floating math symbols */
+.math-bg {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.math-bg span {
+    position: absolute;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 2.2rem);
+    font-weight: 700;
+    color: rgba(108, 99, 255, 0.12);
+    animation: floatUp linear infinite;
+    user-select: none;
+}
+
+@keyframes floatUp {
+    0%   { transform: translateY(110vh) rotate(0deg);   opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* ---------- Page Layout ---------- */
+.auth-page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+/* ---------- Left Panel (branding) ---------- */
+.auth-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: clamp(2rem, 6vw, 6rem) clamp(2rem, 5vw, 5rem);
+    gap: 2rem;
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+}
+
+.brand-logo img {
+    width: 72px;
+    height: 72px;
+    filter: drop-shadow(0 0 18px rgba(108,99,255,0.6));
+    transition: transform var(--transition), filter var(--transition);
+}
+
+.brand-logo:hover img {
+    transform: scale(1.08) rotate(-3deg);
+    filter: drop-shadow(0 0 28px rgba(108,99,255,0.9));
+}
+
+.brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+.brand-tagline {
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
+
+.brand-tagline .hl-purple { color: var(--accent); }
+.brand-tagline .hl-teal   { color: var(--accent-2); }
+
+.brand-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 420px;
+}
+
+.feature-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 999px;
+    padding: 0.45rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    backdrop-filter: blur(8px);
+}
+
+.pill-icon {
+    font-size: 1rem;
+}
+
+/* ---------- Right Panel (form) ---------- */
+.auth-right {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: clamp(1.5rem, 4vw, 4rem) clamp(1.5rem, 4vw, 5rem);
+}
+
+/* ---------- Glass Card ---------- */
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-card);
+    padding: clamp(2rem, 4vw, 3rem);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,.04) inset,
+        0 32px 80px rgba(0,0,0,.5),
+        0 0 60px rgba(108,99,255,.08);
+    animation: cardSlideIn .6s ease both;
+}
+
+@keyframes cardSlideIn {
+    from { opacity: 0; transform: translateY(28px) scale(.97); }
+    to   { opacity: 1; transform: translateY(0)    scale(1);   }
+}
+
+.card-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.card-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+}
+
+.card-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ---------- Form Elements ---------- */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+}
+
+.input-wrap {
+    position: relative;
+}
+
+.input-wrap .input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    opacity: .55;
+    pointer-events: none;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.85rem 1rem 0.85rem 2.8rem;
+    background: var(--input-bg);
+    border: 1.5px solid var(--input-border);
+    border-radius: var(--radius-input);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+}
+
+.form-group input::placeholder {
+    color: rgba(240,244,255,0.3);
+}
+
+.form-group input:focus {
+    border-color: var(--accent);
+    background: rgba(108,99,255,.08);
+    box-shadow: 0 0 0 4px rgba(108,99,255,.15);
+}
+
+/* ---------- Error ---------- */
+.error-msg {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,107,107,.12);
+    border: 1px solid rgba(255,107,107,.3);
+    border-radius: 10px;
+    padding: 0.7rem 1rem;
+    color: #ff9898;
+    font-size: 0.88rem;
+    margin-bottom: 1.2rem;
+}
+
+/* ---------- Primary Button ---------- */
+.btn-primary {
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(135deg, var(--accent) 0%, #9b59f5 100%);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-input);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition);
+    margin-top: 0.4rem;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.18) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(108,99,255,.5);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* ---------- Divider ---------- */
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.4rem 0;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--glass-border);
+}
+
+/* ---------- Switch Link ---------- */
+.switch-link {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 1.2rem;
+}
+
+.switch-link a {
+    color: var(--accent-2);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.switch-link a:hover {
+    color: #fff;
+}
+
+/* ---------- Forgot password ---------- */
+.forgot-link {
+    display: block;
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-top: -0.6rem;
+    margin-bottom: 1rem;
+    transition: color var(--transition);
+}
+
+.forgot-link:hover { color: var(--accent); }
+
+/* ---------- Footer ---------- */
+.auth-footer {
+    position: fixed;
+    bottom: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: rgba(240,244,255,0.25);
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.auth-footer span {
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+    .auth-page {
+        grid-template-columns: 1fr;
+        padding: 2rem 1rem 5rem;
+    }
+
+    .auth-left {
+        display: none;
+    }
+
+    .auth-right {
+        padding: 1rem;
+    }
+
+    .auth-card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 1.8rem 1.4rem;
+        border-radius: 18px;
+    }
 }

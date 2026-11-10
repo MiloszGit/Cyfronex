@@ -1,34 +1,100 @@
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Cyfronex &mdash; Pomoc i Wsparcie</title>
+    <link rel="stylesheet" href="login.css">
+    <style>
+        textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: var(--input-bg);
+            border: 1.5px solid var(--input-border);
+            border-radius: var(--radius-input);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            resize: vertical;
+            transition: border-color var(--transition), background var(--transition), box-shadow var(--transition);
+        }
+        textarea:focus {
+            border-color: var(--accent);
+            background: rgba(108,99,255,.08);
+            box-shadow: 0 0 0 4px rgba(108,99,255,.15);
+        }
+    </style>
 </head>
-
 <body>
-    <div class="iframe">
-        <div class="support-form">
-            <h2>Contact us</h2>
-            <form action="support.html" method="POST">
-                <label for="name">Name And Last Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-                <label for="email">Your Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+<div class="math-bg" id="mathBg"></div>
 
-                <label for="subject">Subject:</label>
-                <input type="text" id="subject" name="subject" placeholder="Enter a topic" required>
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" placeholder="Enter message" rows="5" required></textarea>
-
-                <button type="submit">Wyślij Wiadomość</button>
-            </form>
+<div class="auth-page" style="grid-template-columns: 1fr; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 2rem 1rem;">
+    <div class="auth-card" style="max-width: 520px; width: 100%;">
+        <div class="card-header" style="text-align: center; margin-bottom: 1.8rem;">
+            <a class="brand-logo" href="home.php" style="justify-content: center; margin-bottom: 1rem;">
+                <img src="img/logo.svg" alt="Cyfronex logo" style="width: 52px; height: 52px;">
+                <span class="brand-name">Cyfronex</span>
+            </a>
+            <h2>Centrum Pomocy &#x1F4AC;</h2>
+            <p>Masz pytania lub problem techniczny? Napisz do nas!</p>
         </div>
-    </div>
-</body>
 
+        <form action="support.html" method="POST">
+            <div class="form-group">
+                <label for="name">Imie i nazwisko</label>
+                <div class="input-wrap">
+                    <span class="input-icon">&#x1F464;</span>
+                    <input type="text" id="name" name="name" placeholder="Twoje imie i nazwisko" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Adres e-mail</label>
+                <div class="input-wrap">
+                    <span class="input-icon">&#x2709;&#xFE0F;</span>
+                    <input type="email" id="email" name="email" placeholder="twoj@email.com" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Temat zgloszenia</label>
+                <div class="input-wrap">
+                    <span class="input-icon">&#x1F4CC;</span>
+                    <input type="text" id="subject" name="subject" placeholder="Czego dotyczy zgloszenie?" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Tresc wiadomosci</label>
+                <textarea id="message" name="message" placeholder="Opisz swoj problem lub sugestie..." rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Wyslij wiadomosc &rarr;</button>
+        </form>
+
+        <p class="switch-link" style="margin-top: 1.5rem;">
+            <a href="home.php">&larr; Wroc do strony glownej</a>
+        </p>
+    </div>
+</div>
+
+<p class="auth-footer">Copyright &copy;2026 <span>Radoslaw Mazur &amp; Milosz Biniek</span></p>
+
+<script>
+    const symbols = ['\u03A3','\u222B','\u221A','\u03C0','\u221E','\u2248','\u0394','\u2202','\u2207','\u03B1','\u03B2','\u03B3','\u03BB','\u03B8','\u2208','\u2200','\u2203','\u00B1','\u00D7','\u00F7','\u00B2','\u00B3'];
+    const container = document.getElementById('mathBg');
+    for (let i = 0; i < 22; i++) {
+        const span = document.createElement('span');
+        span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        span.style.left = Math.random() * 100 + 'vw';
+        span.style.animationDuration = (14 + Math.random() * 20) + 's';
+        span.style.animationDelay = (Math.random() * -30) + 's';
+        span.style.fontSize = (1 + Math.random() * 1.8) + 'rem';
+        span.style.opacity = Math.random() * 0.5 + 0.05;
+        container.appendChild(span);
+    }
+</script>
+</body>
 </html>

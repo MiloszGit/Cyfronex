@@ -1,17 +1,17 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8');
 session_start();
 include 'db.php';
 
-$username = $_POST['username'];
+$username = mysqli_real_escape_string($conn, $_POST['username']);
 $password = $_POST['password'];
 
-$query = "SELECT * FROM users WHERE username = $1";
-$result = pg_query_params($conn, $query, array($username));
-
-$user = pg_fetch_assoc($result);
+$query  = "SELECT * FROM users WHERE username = '$username'";
+$result = mysqli_query($conn, $query);
+$user   = mysqli_fetch_assoc($result);
 
 if ($user && password_verify($password, $user['password'])) {
-    $_SESSION['user'] = $username;
+    $_SESSION['user'] = $user['username'];
     header("Location: home.php");
     exit;
 } else {
