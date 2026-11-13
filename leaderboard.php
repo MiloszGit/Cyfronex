@@ -47,6 +47,7 @@ if ($leaderboardQuery) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
     <style>
         .points-badge {
             display: flex;
@@ -500,7 +501,7 @@ if ($leaderboardQuery) {
 
     <!-- Footer -->
     <footer class="app-footer">
-        <p>Copyright &copy;2026 <span class="designer">Radoslaw Mazur &amp; Milosz Biniek</span> &mdash; Cyfronex Platforma Edukacyjna</p>
+        <p>Copyright &copy;2026 <span class="designer"> Milosz Biniek</span> &mdash; Cyfronex Platforma Edukacyjna</p>
     </footer>
 
 </div>

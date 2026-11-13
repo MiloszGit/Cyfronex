@@ -47,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyfronex &mdash; Rejestracja</title>
@@ -243,7 +244,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </div>
 
-<p class="auth-footer">Copyright &copy;2026 <span>Radoslaw Mazur &amp; Milosz Biniek</span></p>
+<p class="auth-footer">Copyright &copy;2026 <span> Milosz Biniek</span></p>
 
 <script>
     const symbols = ['\u03A3','\u222B','\u221A','\u03C0','\u221E','\u2248','\u0394','\u2202','\u2207','\u03B1','\u03B2','\u03B3','\u03BB','\u03B8','\u2208','\u2200','\u2203','\u00B1','\u00D7','\u00F7','\u00B2','\u00B3'];

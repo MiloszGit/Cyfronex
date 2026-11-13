@@ -23,11 +23,14 @@ $userPoints = $userData && isset($userData['punkty']) ? intval($userData['punkty
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyfronex &mdash; Panel Glowny</title>
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="img/logos.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5215998614826017"
+     crossorigin="anonymous"></script>
     <style>
         .points-badge {
             display: flex;
@@ -253,7 +256,7 @@ $userPoints = $userData && isset($userData['punkty']) ? intval($userData['punkty
 
     <!-- Footer -->
     <footer class="app-footer">
-        <p>Copyright &copy;2026 <span class="designer">Radoslaw Mazur &amp; Milosz Biniek</span> &mdash; Cyfronex Platforma Edukacyjna</p>
+        <p>Copyright &copy;2026 <span class="designer"> Milosz Biniek</span> &mdash; Cyfronex Platforma Edukacyjna</p>
     </footer>
 
 </div>
